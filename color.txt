@@ -1,0 +1,8 @@
+#F0E68C No disease (240, 230, 140)
+#FF0000 BCC (255, 0, 0)
+#FF4500 Bowen's disease (AIKEC) (255, 69, 0)
+#7CFC00 Melanoma (124, 252, 0)
+#008B8B Nevus (0, 139, 139)
+#9932CC Pigmented Benign Keratoses (153, 50, 204)
+#2F4F4F Dermatofibroma (47, 79, 79)
+#1E90FF Vascular (30, 144, 255)
