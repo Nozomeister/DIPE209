@@ -3,13 +3,11 @@ if __name__ == '__main__':
     import numpy as np
     from PIL import Image
     from skimage.transform import resize as sk_resize
-
     from paths import submission_dir, mkdir_if_not_exist
     from models import backbone
     from runs.seg_eval import task1_post_process
     from datasets.ISIC2018 import load_validation_data, load_test_data
     from misc_utils.prediction_utils import inv_sigmoid, sigmoid, cyclic_pooling, cyclic_stacking
-    from misc_utils.visualization_utils import view_by_batch
 
     def task1_tta_predict(model, img_arr):
         img_arr_tta = cyclic_stacking(img_arr)
@@ -22,7 +20,7 @@ if __name__ == '__main__':
 
         return mask_crops_pred
 
-    backbone_name = 'vgg16'
+    backbone_name = 'vgg19'
     version = '0'
     task_idx = 1
     use_tta = False
@@ -63,9 +61,7 @@ if __name__ == '__main__':
     mkdir_if_not_exist([output_dir])
 
     for i_image, i_name in enumerate(image_names):
-
         current_pred = y_pred[i_image]
-        print('abc',y_pred)
         current_pred = current_pred * 255
         
         resized_pred = sk_resize(current_pred,
@@ -74,9 +70,8 @@ if __name__ == '__main__':
                                  mode='reflect',
                                  anti_aliasing=True)
 
-        resized_pred[resized_pred > 128] = 255
+        resized_pred[resized_pred > 128] = 255  
         resized_pred[resized_pred <= 128] = 0
-
         im = Image.fromarray(resized_pred.astype(np.uint8))
         im.save(output_dir + '/' + i_name + '.png')
-    
+     

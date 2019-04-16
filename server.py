@@ -16,8 +16,8 @@ import flask
 from paths import root_dir, submission_dir, mkdir_if_not_exist #import creating directory code
 
 DATA_DIR = submission_dir
-INPUT_DIR = 'submissions/Input/'
-OUTPUT_DIR = 'submissions/Output/'
+INPUT_DIR = DATA_DIR + '/Input'
+OUTPUT_DIR = DATA_DIR + '/Output'
 KEEP_ALIVE_DELAY = 25
 MAX_IMAGE_SIZE = 800, 600
 MAX_IMAGES = 10
@@ -27,10 +27,10 @@ APP = flask.Flask(__name__, static_folder=DATA_DIR)
 BROADCAST_QUEUE = Queue()
 
 try:  # Reset saved files on each start
-    rmtree(INPUT_DIR, True)
-    rmtree(OUTPUT_DIR, True)
-    os.mkdir(INPUT_DIR)
-    os.mkdir(OUTPUT_DIR)
+    #rmtree(INPUT_DIR, True)
+    #rmtree(OUTPUT_DIR, True)
+    #os.mkdir(INPUT_DIR)
+    #os.mkdir(OUTPUT_DIR)
 except OSError:
     pass
 
@@ -106,18 +106,15 @@ def event_stream(client):
 def post():
     """Handle image uploads."""
     sha1sum = sha1(flask.request.data).hexdigest()
-    target_name = '{}'.format(sha1sum) + '.jpg' #image name
-    target = INPUT_DIR + target_name
-    target2 = OUTPUT_DIR + '{}'.format(sha1sum) + '.png' #changing
+    target = '../submissions/Input/ISIC_0012092.jpg' #changing
+    print('abc',target)
+    os.system('python seg_predict.py')
+    
+    target2 = '../submissions/Output/ISIC_0012092.png' #changing
+    print('DEF', target2)
+    message = json.dumps({'src': target, 'src_proc': target2})
     try:
         if save_normalized_image(target, flask.request.data):
-            os.system('python runs/seg_predict.py')
-            os.system('python runs/cls_predict.py')
-            with open(r"{}".format(target2), "rb") as f:
-                z = f.read()
-            save_normalized_image(target2, z)
-            message = json.dumps({'src': target, 'src_proc': target2, 
-                          'ip_addr': safe_addr(flask.request.access_route[0])})
             broadcast(message)  # Notify subscribers of completion
     except Exception as exception:  # Output errors
         return '{}'.format(exception)

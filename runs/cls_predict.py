@@ -1,16 +1,28 @@
 import numpy as np
-
-
+import glob
+import cv2
+import skimage
 def softmax(x):
     e_x = np.exp(x - np.max(x))
     return e_x / np.sum(e_x, axis=1, keepdims=True)
-
+    
+def numbers_to_strings(argument):
+    switcher = {
+        0: "Melanoma",
+        1: "Melanocytic nevus",
+        2: "Basal cell carcinoma",
+        3: "Actinic keratosis / Bowen's disease (intraepithelial carcinoma)",
+        4: "Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)",
+        5: "Dermatofibroma",
+        6: "Vascular lesion",
+    }
+    return switcher.get(argument, "nothing")
 
 if __name__ == '__main__':
 
     from keras import Model
     from models import backbone
-    from paths import submission_dir
+    from paths import submission_dir, mkdir_if_not_exist
     from datasets.ISIC2018 import load_validation_data, load_test_data
     from misc_utils.prediction_utils import cyclic_stacking
 
@@ -29,7 +41,7 @@ if __name__ == '__main__':
     version = '0'
     use_tta = False
 
-    pred_set = 'validation'  # or test
+    pred_set = 'test'  # or test
     load_func = load_validation_data if pred_set == 'validation' else load_test_data
     images, image_names = load_func(task_idx=3, output_size=224)
 
@@ -38,7 +50,7 @@ if __name__ == '__main__':
     images = images[:max_num_images]
     image_names = image_names[:max_num_images]
 
-    num_folds = 0
+    num_folds = 1
 
     print('Starting prediction for set %s with TTA set to %r with num_folds %d' % (pred_set, use_tta, num_folds))
 
@@ -60,19 +72,43 @@ if __name__ == '__main__':
 
     print('Done predicting -- creating submission')
 
-    submission_file = submission_dir + '/task3_' + pred_set + '_submission.csv'
-    f = open(submission_file, 'w')
-    f.write('image,MEL,NV,BCC,AKIEC,BKL,DF,VASC\n')
-
+    #submission_file = submission_dir + '/task3_' + pred_set + '_submission.csv'
+    #submission_file = submission_dir + '/task3_' + pred_set + '_submission.json' #writing to txt file
+    #f = open(submission_file, 'w')
+    #f.write('image,MEL,NV,BCC,AKIEC,BKL,DF,VASC\n') //for csv only
     for i_image, i_name in enumerate(image_names):
         i_line = i_name
+        print(i_name)
+        max_prob = 0
+        cls_prob = 1
         for i_cls in range(7):
             prob = y_prob[i_image, i_cls]
-            if prob < 0.001:
-                prob = 0.
-            i_line += ',' + str(prob)
+            if prob > max_prob:
+               max_prob = prob
+               cls_prob = i_cls
+        original_image = cv2.imread(submission_dir + '/Input/' + i_name + '.jpg') #load original
+        mask_image = cv2.imread(submission_dir + '/Output/' + i_name + '.png') #load mask
+        grey_image = cv2.cvtColor(mask_image, cv2.COLOR_BGR2GRAY) #convert mask to grey channel
+       	color_image = np.zeros(original_image.shape, original_image.dtype)  #set all value to 0
+        if (cls_prob==1):
+            color_image[:,:] = (0, 252, 124) #melanoma      
+        elif (cls_prob==2):
+            color_image[:,:] = (139, 139, 0) #nevus   
+        elif (cls_prob==3):
+            color_image[:,:] = (0, 0, 255) #BCC
+        elif (cls_prob==4):
+            color_image[:,:] = (0, 69, 255) #Bowen's Disaease/AIKEC
+        elif (cls_prob==5):
+            color_image[:,:] = (204, 50, 153) #Benign Keratoses
+        elif (cls_prob==6):
+            color_image[:,:] = (79, 79, 47) #Dermatofibroma
+        elif (cls_prob==7):
+            color_image[:,:] = (255, 144, 30) #Vascular
+        else: color_image[:,:] = (140, 230, 240) #no disease
+        color_mask = cv2.bitwise_and(color_image, color_image, mask=grey_image)
+        output_image = cv2.addWeighted(color_mask, 0.35, original_image, 1, 0 ,original_image)
+        cv2.imwrite(submission_dir + '/Output/' + i_name + '.png', original_image)
+        print(cls_prob)
+    
 
-        i_line += '\n'
-        f.write(i_line)  # Give your csv text here.
-
-    f.close()
+    

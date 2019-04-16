@@ -1,0 +1,193 @@
+ISIC_0034374,Melanocytic nevus
+ISIC_0034464,Melanocytic nevus
+ISIC_0034407,Melanocytic nevus
+ISIC_0034394,Melanoma
+ISIC_0034381,Melanoma
+ISIC_0034386,Melanocytic nevus
+ISIC_0034342,Melanocytic nevus
+ISIC_0034486,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034453,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034452,Melanocytic nevus
+ISIC_0034425,Melanocytic nevus
+ISIC_0034502,Melanocytic nevus
+ISIC_0034354,Melanoma
+ISIC_0034403,Melanocytic nevus
+ISIC_0034340,Melanocytic nevus
+ISIC_0034329,Melanoma
+ISIC_0034344,Basal cell carcinoma
+ISIC_0034472,Melanoma
+ISIC_0034448,Melanocytic nevus
+ISIC_0034333,Melanocytic nevus
+ISIC_0034387,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034368,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034434,Melanocytic nevus
+ISIC_0034355,Melanocytic nevus
+ISIC_0034357,Melanocytic nevus
+ISIC_0034444,Melanocytic nevus
+ISIC_0034406,Basal cell carcinoma
+ISIC_0034521,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034478,Melanocytic nevus
+ISIC_0034428,Melanocytic nevus
+ISIC_0034341,Melanocytic nevus
+ISIC_0034410,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034426,Melanocytic nevus
+ISIC_0034430,Melanocytic nevus
+ISIC_0034505,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034475,Melanocytic nevus
+ISIC_0034494,Melanoma
+ISIC_0034322,Melanocytic nevus
+ISIC_0034523,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034483,Melanocytic nevus
+ISIC_0034497,Melanoma
+ISIC_0034469,Melanoma
+ISIC_0034346,Basal cell carcinoma
+ISIC_0034438,Melanoma
+ISIC_0034484,Melanocytic nevus
+ISIC_0034461,Melanocytic nevus
+ISIC_0034330,Melanocytic nevus
+ISIC_0034491,Melanocytic nevus
+ISIC_0034331,Melanocytic nevus
+ISIC_0034332,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034520,Melanocytic nevus
+ISIC_0034437,Melanocytic nevus
+ISIC_0034375,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034515,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034476,Melanocytic nevus
+ISIC_0034345,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034465,Melanocytic nevus
+ISIC_0034401,Melanocytic nevus
+ISIC_0034522,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034347,Melanocytic nevus
+ISIC_0034400,Melanocytic nevus
+ISIC_0034413,Dermatofibroma
+ISIC_0034348,Melanocytic nevus
+ISIC_0034455,Vascular lesion
+ISIC_0034422,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034390,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034433,Melanocytic nevus
+ISIC_0034404,Melanoma
+ISIC_0034372,Melanocytic nevus
+ISIC_0034496,Melanocytic nevus
+ISIC_0034446,Melanoma
+ISIC_0034487,Melanoma
+ISIC_0034519,Melanocytic nevus
+ISIC_0034516,Melanocytic nevus
+ISIC_0034395,Melanocytic nevus
+ISIC_0034456,Melanocytic nevus
+ISIC_0034364,Melanocytic nevus
+ISIC_0034443,Melanocytic nevus
+ISIC_0034451,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034500,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034514,Melanocytic nevus
+ISIC_0034499,Melanocytic nevus
+ISIC_0034412,Melanocytic nevus
+ISIC_0034450,Melanoma
+ISIC_0034398,Melanoma
+ISIC_0034336,Melanocytic nevus
+ISIC_0034481,Melanocytic nevus
+ISIC_0034493,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034414,Melanocytic nevus
+ISIC_0034343,Melanocytic nevus
+ISIC_0034420,Melanocytic nevus
+ISIC_0034409,Basal cell carcinoma
+ISIC_0034397,Melanocytic nevus
+ISIC_0034385,Melanocytic nevus
+ISIC_0034356,Melanocytic nevus
+ISIC_0034466,Melanocytic nevus
+ISIC_0034378,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034323,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034467,Melanocytic nevus
+ISIC_0034321,Melanocytic nevus
+ISIC_0034511,Melanocytic nevus
+ISIC_0034518,Melanocytic nevus
+ISIC_0034435,Melanocytic nevus
+ISIC_0034338,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034517,Melanocytic nevus
+ISIC_0034439,Melanocytic nevus
+ISIC_0034477,Melanocytic nevus
+ISIC_0034504,Melanoma
+ISIC_0034489,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034334,Dermatofibroma
+ISIC_0034424,Melanocytic nevus
+ISIC_0034463,Melanocytic nevus
+ISIC_0034480,Melanocytic nevus
+ISIC_0034367,Melanocytic nevus
+ISIC_0034377,Melanocytic nevus
+ISIC_0034427,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034470,Melanoma
+ISIC_0034423,Melanocytic nevus
+ISIC_0034490,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034449,Melanocytic nevus
+ISIC_0034503,Melanocytic nevus
+ISIC_0034429,Melanocytic nevus
+ISIC_0034339,Melanocytic nevus
+ISIC_0034380,Melanocytic nevus
+ISIC_0034328,Melanocytic nevus
+ISIC_0034369,Melanocytic nevus
+ISIC_0034391,Melanocytic nevus
+ISIC_0034418,Melanocytic nevus
+ISIC_0034324,Melanocytic nevus
+ISIC_0034501,Melanocytic nevus
+ISIC_0034335,Melanocytic nevus
+ISIC_0034326,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034512,Melanocytic nevus
+ISIC_0034419,Melanocytic nevus
+ISIC_0034459,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034352,Melanocytic nevus
+ISIC_0034482,Melanoma
+ISIC_0034468,Melanocytic nevus
+ISIC_0034506,Melanocytic nevus
+ISIC_0034445,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034363,Melanocytic nevus
+ISIC_0034458,Melanocytic nevus
+ISIC_0034495,Melanocytic nevus
+ISIC_0034507,Melanocytic nevus
+ISIC_0034509,Melanocytic nevus
+ISIC_0034399,Melanocytic nevus
+ISIC_0034365,Melanocytic nevus
+ISIC_0034350,Melanocytic nevus
+ISIC_0034415,Melanocytic nevus
+ISIC_0034361,Basal cell carcinoma
+ISIC_0034379,Melanocytic nevus
+ISIC_0034325,Melanocytic nevus
+ISIC_0034360,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034457,Melanoma
+ISIC_0034371,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034508,Vascular lesion
+ISIC_0034349,Melanocytic nevus
+ISIC_0034447,Melanocytic nevus
+ISIC_0034392,Melanoma
+ISIC_0034416,Melanoma
+ISIC_0034454,Melanocytic nevus
+ISIC_0034498,Melanocytic nevus
+ISIC_0034441,Melanocytic nevus
+ISIC_0034436,Melanocytic nevus
+ISIC_0034474,Melanocytic nevus
+ISIC_0034440,Melanocytic nevus
+ISIC_0034370,Melanocytic nevus
+ISIC_0034376,Melanoma
+ISIC_0034488,Melanocytic nevus
+ISIC_0034471,Vascular lesion
+ISIC_0034396,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034513,Melanocytic nevus
+ISIC_0034405,Basal cell carcinoma
+ISIC_0034510,Melanocytic nevus
+ISIC_0034421,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034492,Melanoma
+ISIC_0034431,Melanocytic nevus
+ISIC_0034402,Actinic keratosis / Bowen's disease (intraepithelial carcinoma)
+ISIC_0034359,Melanocytic nevus
+ISIC_0034485,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034383,Basal cell carcinoma
+ISIC_0034337,Melanocytic nevus
+ISIC_0034362,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034382,Melanoma
+ISIC_0034393,Melanocytic nevus
+ISIC_0034351,Melanocytic nevus
+ISIC_0034389,Melanocytic nevus
+ISIC_0034366,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034417,Melanocytic nevus
+ISIC_0034460,Benign keratosis (solar lentigo / seborrheic keratosis / lichen planus-like keratosis)
+ISIC_0034411,Melanoma
+ISIC_0034442,Melanocytic nevus
+ISIC_0034408,Melanocytic nevus
