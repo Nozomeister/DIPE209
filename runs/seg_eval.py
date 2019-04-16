@@ -46,7 +46,7 @@ def task1_post_process(y_prediction, threshold=0.5, gauss_sigma=0.):
 
 if __name__ == '__main__':
 
-    backbone_name = 'vgg16'
+    backbone_name = 'densenet169'
     # backbone_name = 'inception_v3'
     k_fold = 0
     version = '0'

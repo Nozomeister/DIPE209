@@ -12,7 +12,7 @@ if __name__ == '__main__':
     task_idx = 1
     version = '0'
 
-    num_folds = 5
+    num_folds = 5 #5 original
 
     for k_fold in range(num_folds):
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         # backbone_name = 'resnet50'
         # backbone_name = 'densenet169'
 
-        backbone_name = 'vgg16'
+        backbone_name = 'densenet169'
 
         # Network architecture
         upsampling_type = 'deconv'
@@ -54,9 +54,9 @@ if __name__ == '__main__':
         # training parameter
         batch_size = 32
         initial_epoch = 0
-        epochs = 25
+        epochs = 30 #original 25
         init_lr = 1e-4  # Note learning rate is very important to get this to train stably
-        min_lr = 1e-7
+        min_lr = 1e-8 #original 1e-7
         patience = 1
 
         # data augmentation parameters
