@@ -10,7 +10,6 @@ if __name__ == '__main__':
     from misc_utils.visualization_utils import BatchVisualization
     from keras.preprocessing.image import ImageDataGenerator
     import sys
-
     # backbone_name = 'vgg16'
     # backbone_name = 'resnet50'
     # backbone_name = 'densenet169'
