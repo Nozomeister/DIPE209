@@ -68,15 +68,7 @@ if __name__ == '__main__':
     y_prob = softmax(y_pred)
 
     print('Done predicting -- creating submission')
-<<<<<<< HEAD
     
-=======
-
-    #submission_file = submission_dir + '/task3_' + pred_set + '_submission.csv'
-    #submission_file = submission_dir + '/task3_' + pred_set + '_submission.json' #writing to txt file
-    #f = open(submission_file, 'w')
-    #f.write('image,MEL,NV,BCC,AKIEC,BKL,DF,VASC\n') //for csv only
->>>>>>> c4b441a38b59a0ba03822a008a93b2cc7bc0b957
     for i_image, i_name in enumerate(image_names):
         i_line = i_name
         print(i_name)
@@ -88,7 +80,6 @@ if __name__ == '__main__':
                max_prob = prob
                cls_prob = i_cls
         original_image = cv2.imread(submission_dir + '/Input/' + i_name + '.jpg') #load original
-<<<<<<< HEAD
         #true_original = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB) #convert original image
         mask_image = cv2.imread(submission_dir + '/Output/' + i_name + '.png') #load mask
         grey_image = cv2.cvtColor(mask_image, cv2.COLOR_BGR2GRAY) #convert mask to grey channel
@@ -119,28 +110,6 @@ if __name__ == '__main__':
         color_mask = cv2.bitwise_and(color_image, color_image, mask=black_image)
         output_image = cv2.addWeighted(color_mask, 0.35, original_image, 1, 0 ,original_image)
         #cv2.putText(original_image, numbers_to_strings(cls_prob), (20, 40), cv2.FONT_HERSHEY_TRIPLEX, 1.0, (255, 255, 255), 1,  lineType=cv2.LINE_AA)
-=======
-        mask_image = cv2.imread(submission_dir + '/Output/' + i_name + '.png') #load mask
-        grey_image = cv2.cvtColor(mask_image, cv2.COLOR_BGR2GRAY) #convert mask to grey channel
-       	color_image = np.zeros(original_image.shape, original_image.dtype)  #set all value to 0
-        if (cls_prob==1):
-            color_image[:,:] = (0, 252, 124) #melanoma      
-        elif (cls_prob==2):
-            color_image[:,:] = (139, 139, 0) #nevus   
-        elif (cls_prob==3):
-            color_image[:,:] = (0, 0, 255) #BCC
-        elif (cls_prob==4):
-            color_image[:,:] = (0, 69, 255) #Bowen's Disaease/AIKEC
-        elif (cls_prob==5):
-            color_image[:,:] = (204, 50, 153) #Benign Keratoses
-        elif (cls_prob==6):
-            color_image[:,:] = (79, 79, 47) #Dermatofibroma
-        elif (cls_prob==7):
-            color_image[:,:] = (255, 144, 30) #Vascular
-        else: color_image[:,:] = (140, 230, 240) #no disease
-        color_mask = cv2.bitwise_and(color_image, color_image, mask=grey_image)
-        output_image = cv2.addWeighted(color_mask, 0.35, original_image, 1, 0 ,original_image)
->>>>>>> c4b441a38b59a0ba03822a008a93b2cc7bc0b957
         cv2.imwrite(submission_dir + '/Output/' + i_name + '.png', original_image)
         print(cls_prob)
     
