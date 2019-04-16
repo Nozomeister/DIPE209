@@ -16,6 +16,7 @@ dask==0.17.2
 decorator==4.3.0
 distributed==1.21.6
 gast==0.2.0
+graphviz==2.40.1
 grpcio==1.11.0
 h5py==2.7.1
 heapdict==1.0.0
