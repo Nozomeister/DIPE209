@@ -1,31 +1,28 @@
-import numpy as np
-import glob
-import cv2
-import skimage
-def softmax(x):
-    e_x = np.exp(x - np.max(x))
-    return e_x / np.sum(e_x, axis=1, keepdims=True)
-    
-def numbers_to_strings(argument):
-    switcher = {
-        0: "Melanoma",
-        1: "Melanocytic nevus",
-        2: "Basal cell carcinoma",
-        3: "Bowen's disease",
-        4: "Benign keratosis",
-        5: "Dermatofibroma",
-        6: "Vascular lesion",
-    }
-    return switcher.get(argument, "nothing")
-
 if __name__ == '__main__':
-
+    import numpy as np
+    import glob
+    import cv2
+    import skimage
     from keras import Model
     from models import backbone
     from paths import submission_dir, mkdir_if_not_exist
     from datasets.ISIC2018 import load_validation_data, load_test_data
     from misc_utils.prediction_utils import cyclic_stacking
-
+    def softmax(x):
+        e_x = np.exp(x - np.max(x))
+        return e_x / np.sum(e_x, axis=1, keepdims=True)
+    
+    def numbers_to_strings(argument):
+        switcher = {
+            0: "Melanoma",
+            1: "Melanocytic nevus",
+            2: "Basal cell carcinoma",
+            3: "Bowen's disease",
+            4: "Benign keratosis",
+            5: "Dermatofibroma",
+            6: "Vascular lesion",
+        }
+        return switcher.get(argument, "nothing")
     def task3_tta_predict(model, img_arr):
         img_arr_tta = cyclic_stacking(img_arr)
         pred_logits = np.zeros(shape=(img_arr.shape[0], 7))
@@ -71,11 +68,7 @@ if __name__ == '__main__':
     y_prob = softmax(y_pred)
 
     print('Done predicting -- creating submission')
-
-    #submission_file = submission_dir + '/task3_' + pred_set + '_submission.csv'
-    #submission_file = submission_dir + '/task3_' + pred_set + '_submission.json' #writing to txt file
-    #f = open(submission_file, 'w')
-    #f.write('image,MEL,NV,BCC,AKIEC,BKL,DF,VASC\n') //for csv only
+    
     for i_image, i_name in enumerate(image_names):
         i_line = i_name
         print(i_name)
