@@ -39,6 +39,7 @@ body {font-family: "Lato", sans-serif}
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
     <a href="#app" class="w3-bar-item w3-button w3-padding-large w3-hide-small">APPLICATION</a>
+    <a href="#legend" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CLASSIFICATION</a>
     <a href="#how" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOW IT WORKS</a>
     <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
     <div class="w3-dropdown-hover w3-hide-small">
@@ -54,14 +55,12 @@ body {font-family: "Lato", sans-serif}
 
 <!-- Homepage -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="HOME">
-    <h2 class="w3-wide">HOME</h2>
-    <p class="w3-opacity"><i>Default page</i></p>
-    <p class="w3-justify">Our aim is to explore how image segmentation can be applied in the medical field-
-    specifically human skin to detect any abnormality and to identify its disease. This is
-    done through pixel classification using the segmentation by Machine Learning. 
-    After training the neural network model,  we would test it on real life subjects
-    to assess and validate our results and implement our product in the medical field.
-  </font>
+    <h1 class="w3-wide">HOME</h1>
+    <p class="w3-opacity"><i>Where it all begins</i></p>
+    <p class="w3-justify">Our aim is to explore how <u>image segmentation</u> can be applied in the medical field-
+    specifically human skin to detect any abnormality and to identify its disease. This is done through <u>pixel classification</u> using the segmentation by <u>Machine Learning</u>. 
+    <br>
+    <b>This application can diagnose what skin disease you might have.</b>
     </p>
     <div class="w3-row w3-padding-32">
       <div class="w3-third">
@@ -79,7 +78,7 @@ body {font-family: "Lato", sans-serif}
 
 
    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="app">
-    <h2 class="w3-wide">APPLICATION</h2>
+    <h1 class="w3-wide">APPLICATION</h1>
     <p class="w3-opacity" class="notice"><i>Disclaimer: The author of this application accepts no responsibility for the images uploaded to this web service.</i></p>
     <p>
       To upload<br>
@@ -97,18 +96,95 @@ body {font-family: "Lato", sans-serif}
 <div id="images"></div>
 <h3>Processed Images</h3>
 <div id="images2"></div>
+<p class="w3-opacity" class="notice">The below are predicted to 79% accuracy assuming your photo is correctly taken </p> <!-put w3-center if needed>
+  <p><b> Prediction results: </b></p>
+
+<!-- LEGEND -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="legend">
+    <h1 class="w3-wide">CLASSIFICATION</h1>
+    <p class="w3-opacity"><i>What does the colour means</i></p>   
+  <table align="center">
+    <tr>
+      <th>Colour</th>
+      <th>Colour Name</th>
+      <th>Prediction</th>
+      <th>Directions (steps to take)</th>
+    </tr>
+     <tr>
+      <td style="background:khaki;">&nbsp;</td>
+      <td>khaki</td>
+      <td>No disease detected</td>
+      <td>Very nice! Continue to be healthy! <i class="fa fa-smile-o" aria-hidden="true"></i> </td>
+    </tr>
+    <tr>
+      <td style="background:red;"></td>
+      <td>red</td>
+      <td>BCC (basal cell carcinoma) <b>[CANCER]</b></td>
+      <td>Surgery or X-ray radiation</td>
+
+    </tr>
+      <tr>
+      <td style="background:orangered;">&nbsp;</td>
+      <td>orangered</td>
+      <td>Bowen's disease <b> [CANCER]</b> </td>
+      <td>Cream, Cryotherapy<sup>1</sup></td>
+    </tr>
+
+      <tr>
+      <td style="background:lawngreen;"></td>
+      <td>lawngreen</td>
+      <td>Melanoma</td>
+      <td>Request for a Biopsy<sup>2</sup></td>
+    </tr>
+    <tr>
+      <td style="background:darkcyan;">&nbsp;</td>
+      <td>darkcyan</td>
+
+    <td>Nevus</td>
+      <td>May or may not be dangerous<sup>3</sup></td>
+    </tr>
+    <tr>
+      <td style="background:darkorchid;">&nbsp;</td>
+      <td>darkorchid</td>
+      <td>Pigmented Benign Keratoses</td>
+      <td>No treatment needed<sup>4</sup></td>
+    </tr>
+    <tr>
+      <td style="background:darkslategray;">&nbsp;</td>
+      <td>darkslategray</td>
+      <td>Dermatofibroma</td>
+      <td>No treatment needed<sup>4</sup></td>
+    </tr>
+    <tr>
+      <td style="background:dodgerblue;">&nbsp;</td>
+      <td>dodgerblue</td>
+      <td>Vascular</td>
+      <td>Laser surgery, excel V and xeo<sup>5</sup></td>
+    </tr>
+
+  </table>
+<br>
+<p class="w3-opacity w3-justify">
+<sup>1</sup>Cryotherapy means removing a lesion by freezing it, usually with liquid nitrogen. Moderately aggressive cryotherapy is suitable for multiple, small, flat patches of intraepidermal SCC. It leaves a permanent white mark at the site of treatment.<br>
+<sup>2</sup>Biopsy: further examination by a dermatologist, and if needed, the removal of all or some of the unusual spot, followed by the examination of the tissue under a microscope<br>
+<sup>3</sup>Just a common mole. However, if the color changes, gets smaller or bigger, any changes in shape, texture, or height, skin on the surface becomes dry or scaly, becomes hard or feels lumpy, starts to itch, bleeds or oozes, please see your dermatologist.<br>
+<sup>4</sup>While treatment is not necessary, if it gets worse or you want to remove it for aesthetically, surgery or cryotherapy can be done. (Be warned, there usually is a scar after the operation!)<br>
+<sup>5</sup>Devices for non-invasive surgery. <a href="https://cutera.com/vascular-lesions" target="_top">Products</a><br>
+</p>
+  </div>
+
 <!-- HOW IT WORKS -->
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="how">
-    <h2 class="w3-wide">HOW IT WORKS</h2>
+    <h1 class="w3-wide">HOW IT WORKS</h1>
     <p class="w3-opacity"><i>a brief overview</i></p>
   </div>
 <table style="width:100%">
   <tr>
-    <td>1. Identifying</td>
+    <td><b>1. Identifying</b></td>
     <td></td>
-    <td>2. Segmentation</td>
+    <td><b>2. Segmentation</b></td>
     <td></td>
-    <td>3. Classification</td>
+    <td><b>3. Classification</b></td>
   </tr>
   <tr>
     <td>Uploading of image</td>
@@ -130,7 +206,7 @@ body {font-family: "Lato", sans-serif}
 
 <!-- The Contact Section -->
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <h1 class="w3-wide w3-center">CONTACT</h1>
     <p class="w3-opacity w3-center"><i>Any questions? Drop a note!</i></p>
     <div class="w3-row w3-padding-32">
       <div class="w3-col m6 w3-large w3-margin-bottom">
@@ -138,7 +214,7 @@ body {font-family: "Lato", sans-serif}
         <i class="fa fa-phone" style="width:30px"></i> Phone: +65 6791 1744<br>
         <i class="fa fa-envelope" style="width:30px"> </i> Email: sliew@e.ntu.edu.sg<br>
         <i class="fa fa-user" style="width:30px"></i>
-        Prof Jiang <br>
+        Sean Liew (Mentored by:Prof Jiang) <br>
 
       </div>
       <div class="w3-col m6">
@@ -160,9 +236,9 @@ body {font-family: "Lato", sans-serif}
   
       <!-- The Member Section -->
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="members">
-    <h2 class="w3-wide w3-center">MEMBERS</h2>
+    <h1 class="w3-wide w3-center">MEMBERS</h1>
     <p class="w3-justify w3-center">
-      Leader: Sean<br>
+      <i class="fa fa-child" aria-hidden="true"></i><b>Leader:</b> Sean<br>
         <br>
         <i class="fa fa-paint-brush" aria-hidden="true"></i><b>GUI:</b><br>
         Yee Gin<br>
@@ -177,18 +253,22 @@ body {font-family: "Lato", sans-serif}
         Zhen Yu <br>
         TingJian <br>
         Xuan Zheng <br></p>
-       <p class="w3-opacity w3-center">We would like to thank our phd students who helped us in this project too.</p>
+       <p class="w3-opacity w3-center">We would like to thank our prof and phd students who helped us in this project too.<br> (Prof Jiang Xu Dong, Ding HengHui, Mei JianHan and Wang Xiao Hong)</p>
     </div>
   </div>
+
 <!-- The Source Code Section -->
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="source">
-  <h2 class="w3-wide w3-center">Source Code</h2>
-  <p class="w3-justify w3-center"><a href="http://www.google.com.sg" target="_top">TO BE EDITED: Source Code</a></p><br>
+  <h1 class="w3-wide w3-center">Source Code</h1>
+  <p class="w3-justify w3-center"><a href="https://github.com/yuanqing811/ISIC2018" target="_top">Source Code from ISIC</a><br>
+  <a href="https://github.com/Nozomeister/DIPE209" target="_top">Our github</a></p><br>
 </div>
 <!-- The Reference Section -->
 <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
     <h2 class="w3-wide w3-center">References</h2>
-    <p class="w3-justify w3-center">1. https://www.flaticon.com
+    <p class="w3-justify w3-center">1. https://www.flaticon.com <br>
+      2. https://www.w3schools.com/icons/fontawesome_icons_webapp.asp (for icons) <br>
+      3. https://www.rapidtables.com/web/color/html-color-codes.html (colour codes)
     </p>
   </div>
 </body>
