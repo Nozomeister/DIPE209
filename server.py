@@ -146,7 +146,7 @@ def home():
         images.append('<div><img alt="User uploaded image" src="{}" /></div>'
                       .format(path))
 
-    return render_template('test.html')
+    return render_template('webpage.html')
 
 
 if __name__ == '__main__':
