@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Segmentation and Diseases Prediction Tool</title>
+<meta charset="UTF-8">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/vader/jquery-ui.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+
+#drop {
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0;
+    margin: 1em 0;
+    color: #555;
+    border: 2px dashed #555;
+    border-radius: 7px;
+    cursor: default;
+}
+
+#drop.hover {
+    color: #f00;
+    border-color: #f00;
+    border-style: solid;
+    box-shadow: inset 0 3px 4px #888;
+}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#app" class="w3-bar-item w3-button w3-padding-large w3-hide-small">APPLICATION</a>
+    <a href="#legend" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CLASSIFICATION</a>
+    <a href="#how" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOW IT WORKS</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#members" class="w3-bar-item w3-button">Members</a>
+        <a href="#source" class="w3-bar-item w3-button">Source Code</a>
+        <a href="#ref" class="w3-bar-item w3-button">Reference</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Homepage -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="HOME">
+    <h1 class="w3-wide">HOME</h1>
+    <p class="w3-opacity"><i>Where it all begins</i></p>
+    <p class="w3-justify">Our aim is to explore how <u>image segmentation</u> can be applied in the medical field-
+    specifically human skin to detect any abnormality and to identify its disease. This is done through <u>pixel classification</u> using the segmentation by <u>Machine Learning</u>. 
+    <br>
+    <b>This application can diagnose what skin disease you might have.</b>
+    </p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-third">
+        <img src="https://image.flaticon.com/icons/svg/910/910129.svg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+      </div>
+      <div class="w3-third">
+        <img src="https://image.flaticon.com/icons/svg/202/202381.svg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+      </div>
+      <div class="w3-third">
+        <img src="https://image.flaticon.com/icons/svg/42/42912.svg" class="w3-round" alt="Random Name" style="width:60%">
+      </div>
+    </div>
+  </div>
+
+
+
+   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="app">
+    <h1 class="w3-wide">APPLICATION</h1>
+    <p class="w3-opacity" class="notice"><i>Disclaimer: The author of this application accepts no responsibility for the images uploaded to this web service.</i></p>
+    <p>
+      To upload<br>
+      (i)Either choose a file from the directory (choose file button)
+      <br>
+      (ii)Drag and drop a file into the box below  
+    </p><noscript>Note: You must have javascript enabled in order to upload and dynamically view new images.</noscript>
+<fieldset>
+  <p id="status">Select an image (updated in real-time)</p>
+  <div id="progressbar"></div>
+  <input id="file" type="file" />
+  <div id="drop">or drop image here</div>
+</fieldset>
+<h3>Uploaded Images</h3>
+<div id="images"></div>
+<h3>Processed Images</h3>
+<div id="images2"></div>
+<p class="w3-opacity" class="notice">The result is segmented with a minimum Jaccard Index of 0.777 and classified with an overall Precision of 0.757 based on a validation set of 300 images.</p> <!-put w3-center if needed>
+  <p><b> Segmentation and Classification Result: </b></p>
+
+<!-- LEGEND -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="legend">
+    <h1 class="w3-wide">CLASSIFICATION</h1>
+    <p class="w3-opacity"><i>What does the colour means</i></p>   
+  <table align="center">
+    <tr>
+      <th>Colour</th>
+      <th>Colour Name</th>
+      <th>Prediction</th>
+      <th>Directions (steps to take)</th>
+    </tr>
+     <tr>
+      <td style="background:khaki;">&nbsp;</td>
+      <td>khaki</td>
+      <td>No disease detected</td>
+      <td>Very nice! Continue to be healthy! <i class="fa fa-smile-o" aria-hidden="true"></i> </td>
+    </tr>
+    <tr>
+      <td style="background:red;"></td>
+      <td>red</td>
+      <td>BCC (basal cell carcinoma) <b>[CANCER]</b></td>
+      <td>Surgery or X-ray radiation</td>
+
+    </tr>
+      <tr>
+      <td style="background:orangered;">&nbsp;</td>
+      <td>orangered</td>
+      <td>Bowen's disease <b> [CANCER]</b> </td>
+      <td>Cream, Cryotherapy<sup>1</sup></td>
+    </tr>
+
+      <tr>
+      <td style="background:lawngreen;"></td>
+      <td>lawngreen</td>
+      <td>Melanoma</td>
+      <td>Request for a Biopsy<sup>2</sup></td>
+    </tr>
+    <tr>
+      <td style="background:darkcyan;">&nbsp;</td>
+      <td>darkcyan</td>
+
+    <td>Nevus</td>
+      <td>May or may not be dangerous<sup>3</sup></td>
+    </tr>
+    <tr>
+      <td style="background:darkorchid;">&nbsp;</td>
+      <td>darkorchid</td>
+      <td>Pigmented Benign Keratoses</td>
+      <td>No treatment needed<sup>4</sup></td>
+    </tr>
+    <tr>
+      <td style="background:darkslategray;">&nbsp;</td>
+      <td>darkslategray</td>
+      <td>Dermatofibroma</td>
+      <td>No treatment needed<sup>4</sup></td>
+    </tr>
+    <tr>
+      <td style="background:dodgerblue;">&nbsp;</td>
+      <td>dodgerblue</td>
+      <td>Vascular</td>
+      <td>Laser surgery, excel V and xeo<sup>5</sup></td>
+    </tr>
+
+  </table>
+<br>
+<p class="w3-opacity w3-justify">
+<sup>1</sup>Cryotherapy means removing a lesion by freezing it, usually with liquid nitrogen. Moderately aggressive cryotherapy is suitable for multiple, small, flat patches of intraepidermal SCC. It leaves a permanent white mark at the site of treatment.<br>
+<sup>2</sup>Biopsy: further examination by a dermatologist, and if needed, the removal of all or some of the unusual spot, followed by the examination of the tissue under a microscope<br>
+<sup>3</sup>Just a common mole. However, if the color changes, gets smaller or bigger, any changes in shape, texture, or height, skin on the surface becomes dry or scaly, becomes hard or feels lumpy, starts to itch, bleeds or oozes, please see your dermatologist.<br>
+<sup>4</sup>While treatment is not necessary, if it gets worse or you want to remove it for aesthetically, surgery or cryotherapy can be done. (Be warned, there usually is a scar after the operation!)<br>
+<sup>5</sup>Devices for non-invasive surgery. <a href="https://cutera.com/vascular-lesions" target="_top">Products</a><br>
+</p>
+  </div>
+
+<!-- HOW IT WORKS -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="how">
+    <h1 class="w3-wide">HOW IT WORKS</h1>
+    <p class="w3-opacity"><i>a brief overview</i></p>
+  </div>
+<table style="width:100%">
+  <tr>
+    <td><b>1. Identifying</b></td>
+    <td></td>
+    <td><b>2. Segmentation</b></td>
+    <td></td>
+    <td><b>3. Classification</b></td>
+  </tr>
+  <tr>
+    <td>Uploading of image</td>
+    <td><img src="https://image.flaticon.com/icons/svg/565/565340.svg" class="w3-round" alt="Random Name" style="width:30%"></td>
+    <td>Pixel by pixel recognition</td>
+    <td><img src="https://image.flaticon.com/icons/svg/565/565340.svg" class="w3-round" alt="Random Name" style="width:30%"></td>
+    <td>Determining of malign or benign</td>
+  <tr>
+    <td><img src="https://image.flaticon.com/icons/svg/1508/1508763.svg" class="w3-round" alt="Random Name" style="width:30%"></td>
+    <td> </td>
+    <td><img src="https://image.flaticon.com/icons/svg/1533/1533343.svg" class="w3-round" alt="Random Name" style="width:30%"></td>
+    <td> </td>
+    <td><img src="https://image.flaticon.com/icons/png/512/1190/1190731.png" class="w3-round" alt="Random Name" style="width:30%"></td>
+  </tr>
+</table>
+
+    
+
+
+<!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h1 class="w3-wide w3-center">CONTACT</h1>
+    <p class="w3-opacity w3-center"><i>Any questions? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Nanyang Technological University<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +65 6791 1744<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: sliew@e.ntu.edu.sg<br>
+        <i class="fa fa-user" style="width:30px"></i>
+        Sean Liew (Mentored by:Prof Jiang) <br>
+
+      </div>
+      <div class="w3-col m6">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+      <!-- The Member Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="members">
+    <h1 class="w3-wide w3-center">MEMBERS</h1>
+    <p class="w3-justify w3-center">
+      <i class="fa fa-child" aria-hidden="true"></i><b>Leader:</b> Sean<br>
+        <br>
+        <i class="fa fa-paint-brush" aria-hidden="true"></i><b>GUI:</b><br>
+        Yee Gin<br>
+        Zhong Sheng<br>
+        Feng Tian<br>
+        <br>
+        <i class="fa fa-desktop" aria-hidden="true"></i> <b>Coding:</b><br>
+        Kim Soon <br>
+        Hong Duc <br>
+        <br>
+        <i class="fa fa-book" aria-hidden="true"></i> <b>Lit review:</b><br>
+        Zhen Yu <br>
+        TingJian <br>
+        Xuan Zheng <br></p>
+       <p class="w3-opacity w3-center">We would like to thank our prof and phd students who helped us in this project too.<br> (Prof Jiang Xu Dong, Ding HengHui, Mei JianHan and Wang Xiao Hong)</p>
+    </div>
+  </div>
+
+<!-- The Source Code Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="source">
+  <h1 class="w3-wide w3-center">Source Code</h1>
+  <p class="w3-justify w3-center"><a href="https://github.com/yuanqing811/ISIC2018" target="_top">Source Code from ISIC</a></p><br>
+</div>
+<!-- The Reference Section -->
+<div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">References</h2>
+    <p class="w3-justify w3-center">1. https://www.flaticon.com <br>
+      2. https://www.w3schools.com/icons/fontawesome_icons_webapp.asp (for icons) <br>
+      3. https://www.rapidtables.com/web/color/html-color-codes.html (colour codes)
+    </p>
+  </div>
+</body>
+<script>
+  function sse() {
+      var source = new EventSource('/stream');
+      source.onmessage = function(e) {
+          if (e.data == '')
+              return;
+          $('#images').empty();
+          $('#images2').empty();
+          var data = $.parseJSON(e.data);
+          var upload_message = 'Image uploaded by ' + data['ip_addr'];
+          var image = $('<img>', {alt: upload_message, src: data['src']});
+          var image2 = $('<img>', {alt: upload_message, src: data['src_proc']});
+          var container = $('<div>').hide();
+          var container2 = $('<div>').hide();
+          container.append($('<div>', {text: upload_message}));
+          container.append(image);
+          container2.append($('<div>', {text: upload_message}));
+          container2.append(image2);
+          $('#images').prepend(container);
+          image.load(function(){
+              container.show('blind', {}, 1000);
+          });
+          $('#images2').prepend(container2);
+          image.load(function(){
+              container2.show('blind', {}, 1000);
+          });
+      };
+  }
+  function file_select_handler(to_upload) {
+      var progressbar = $('#progressbar');
+      var status = $('#status');
+      var xhr = new XMLHttpRequest();
+      xhr.upload.addEventListener('loadstart', function(e1){
+          status.text('uploading image');
+          progressbar.progressbar({max: e1.total});
+      });
+      xhr.upload.addEventListener('progress', function(e1){
+          if (progressbar.progressbar('option', 'max') == 0)
+              progressbar.progressbar('option', 'max', e1.total);
+          progressbar.progressbar('value', e1.loaded);
+      });
+      xhr.onreadystatechange = function(e1) {
+          if (this.readyState == 4)  {
+              if (this.status == 200)
+                  var text = 'upload complete: ' + this.responseText;
+              else
+                  var text = 'upload failed: code ' + this.status;
+              status.html(text + '<br/>Select an image');
+              progressbar.progressbar('destroy');
+          }
+      };
+      xhr.open('POST', '/post', true);
+      xhr.send(to_upload);
+  };
+  function handle_hover(e) {
+      e.originalEvent.stopPropagation();
+      e.originalEvent.preventDefault();
+      e.target.className = (e.type == 'dragleave' || e.type == 'drop') ? '' : 'hover';
+  }
+
+  $('#drop').bind('drop', function(e) {
+      handle_hover(e);
+      if (e.originalEvent.dataTransfer.files.length < 1) {
+          return;
+      }
+      file_select_handler(e.originalEvent.dataTransfer.files[0]);
+  }).bind('dragenter dragleave dragover', handle_hover);
+  $('#file').change(function(e){
+      file_select_handler(e.target.files[0]);
+      e.target.value = '';
+  });
+  sse();
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-510348-17']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</html>
